@@ -1,6 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>usingusings</ToolCommandName>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\UsingUsings.Core\UsingUsings.Core.csproj" />
