@@ -50,4 +50,31 @@ public static class Stuff
 			Assert.That(directives, Has.Member("System"));
 		});
 	}
+
+	[Test]
+	public static void AnalyzeWhenCodeHasGlobalNamespace()
+	{
+		var code =
+@"using NUnit.Framework;
+using System;
+
+namespace StuffNamespace;
+
+using global::System;
+
+public static class Stuff 
+{ 
+	public static class MoreStuff { }
+}";
+
+		var analyzer = new UsingDirectiveAnalyzer(code);
+
+		Assert.Multiple(() =>
+		{
+			var directives = analyzer.Directives;
+			Assert.That(directives.Count, Is.EqualTo(2));
+			Assert.That(directives, Has.Member("NUnit.Framework"));
+			Assert.That(directives, Has.Member("System"));
+		});
+	}
 }

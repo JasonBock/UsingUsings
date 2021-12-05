@@ -18,7 +18,8 @@ public sealed class UsingDirectiveAnalyzer
 
 		foreach (var directive in unit.DescendantNodes(_ => true).OfType<UsingDirectiveSyntax>())
 		{
-			directives.Add(directive.Name.ToString());
+			directives.Add(directive.Name.ToString()
+				.Replace("global::", string.Empty, StringComparison.InvariantCulture));
 		}
 
 		this.Directives = directives.ToImmutableHashSet();
