@@ -8,10 +8,7 @@ public sealed class UsingDirectiveAnalyzer
 {
 	public UsingDirectiveAnalyzer(string code)
 	{
-		if (code is null)
-		{
-			throw new ArgumentNullException(nameof(code));
-		}
+		ArgumentNullException.ThrowIfNull(code);
 
 		var directives = new HashSet<string>();
 		var unit = SyntaxFactory.ParseCompilationUnit(code);

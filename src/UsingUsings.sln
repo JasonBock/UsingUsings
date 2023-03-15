@@ -12,8 +12,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C280245F-AA0D-458D-B6D9-A35DD0282424}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		..\changelog.md = ..\changelog.md
 		Directory.Build.props = Directory.Build.props
 		Directory.Packages.props = Directory.Packages.props
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Global

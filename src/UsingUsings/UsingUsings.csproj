@@ -1,10 +1,38 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<AssemblyName>UsingUsings</AssemblyName>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<Description>A tool that generates statistics on namespace usage</Description>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<IncludeSymbols>true</IncludeSymbols>
 		<OutputType>Exe</OutputType>
 		<PackAsTool>true</PackAsTool>
+		<PackageIcon>Icon.png</PackageIcon>
+		<PackageId>UsingUsings</PackageId>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageProjectUrl>https://github.com/jasonbock/usingusings</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageReleaseNotes>A changelog is available at https://github.com/JasonBock/UsingUsings/blob/main/changelog.md</PackageReleaseNotes>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageTags>.NET C# global usings tool</PackageTags>
+		<PackageVersion>$(Version)</PackageVersion>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/jasonbock/usingusings</RepositoryUrl>
+		<RootNamespace>UsingUsings</RootNamespace>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<ToolCommandName>usingusings</ToolCommandName>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+	</ItemGroup>
+	<ItemGroup>
 		<ProjectReference Include="..\UsingUsings.Core\UsingUsings.Core.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\LICENSE" Pack="true" PackagePath="" />
+		<None Include="..\..\README.md" Pack="true" PackagePath="" />
+		<None Include="..\Icon.png" Pack="true" PackagePath="" Visible="false" />
 	</ItemGroup>
 </Project>

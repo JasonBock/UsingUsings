@@ -7,15 +7,8 @@ public static class UsingDirectiveAggregator
 {
 	public static ImmutableDictionary<string, double> Aggregate(DirectoryInfo directory, TextWriter writer)
 	{
-		if (directory is null)
-		{
-			throw new ArgumentNullException(nameof(directory));
-		}
-
-		if (writer is null)
-		{
-			throw new ArgumentNullException(nameof(writer));
-		}
+		ArgumentNullException.ThrowIfNull(directory);
+		ArgumentNullException.ThrowIfNull(writer);
 
 		var fileCount = 0;
 		var directiveCounts = new ConcurrentDictionary<string, uint>();
