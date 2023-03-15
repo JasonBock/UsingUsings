@@ -13,7 +13,7 @@ But which `using` directives in your code base should you make global? That's wh
 Install the tool (the `-g` switch means it will be installed as a global tool):
 
 ```
-dotnet tool install -g usingusings
+dotnet tool install -g UsingUsings
 ```
 
 ### Prerequisites
