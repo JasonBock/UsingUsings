@@ -3,7 +3,7 @@
 		<AssemblyName>UsingUsings</AssemblyName>
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 		<Description>A tool that generates statistics on namespace usage</Description>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<DebugType>embedded</DebugType>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<IncludeSymbols>true</IncludeSymbols>
 		<OutputType>Exe</OutputType>
@@ -17,16 +17,11 @@
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageTags>.NET C# global usings tool</PackageTags>
 		<PackageVersion>$(Version)</PackageVersion>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/jasonbock/usingusings</RepositoryUrl>
 		<RootNamespace>UsingUsings</RootNamespace>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<ToolCommandName>usingusings</ToolCommandName>
 	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
-	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\UsingUsings.Core\UsingUsings.Core.csproj" />
 	</ItemGroup>
