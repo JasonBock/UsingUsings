@@ -18,7 +18,7 @@ dotnet tool install -g UsingUsings
 
 ### Prerequisites
 
-This tool targets .NET 7.
+This tool targets .NET 8.
 
 ## Usage
 

@@ -9,6 +9,6 @@
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 		<TargetFramework>net8.0</TargetFramework>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<Version>1.0.0</Version>
+		<Version>2.0.0</Version>
 	</PropertyGroup>
 </Project>
