@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<EnableNUnitRunner>true</EnableNUnitRunner>
+		<RocksAttributeFile>MockDefinitions.cs</RocksAttributeFile>
 		<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
 	</PropertyGroup>
 	<ItemGroup>
@@ -14,5 +15,9 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="NUnit3TestAdapter" />
+		<PackageReference Include="Rocks" />
+	</ItemGroup>
+	<ItemGroup>
+		<CompilerVisibleProperty Include="RocksAttributeFile" />
 	</ItemGroup>
 </Project>

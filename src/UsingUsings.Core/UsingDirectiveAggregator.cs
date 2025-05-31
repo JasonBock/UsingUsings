@@ -18,7 +18,9 @@ public static class UsingDirectiveAggregator
 		{
 			await writer.WriteLineAsync($"Analyzing {file.FullName}...");
 			fileCount++;
-			var analyzer = new UsingDirectiveDetector(await File.ReadAllTextAsync(file.FullName));
+
+			var analyzer = new UsingDirectiveDetector(
+				await directory.FileSystem.File.ReadAllTextAsync(file.FullName));
 
 			foreach (var directive in analyzer.Directives)
 			{
