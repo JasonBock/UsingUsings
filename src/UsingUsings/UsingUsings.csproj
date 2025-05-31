@@ -5,7 +5,6 @@
 		<Description>A tool that generates statistics on namespace usage</Description>
 		<DebugType>embedded</DebugType>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<IncludeSymbols>true</IncludeSymbols>
 		<OutputType>Exe</OutputType>
 		<PackAsTool>true</PackAsTool>
 		<PackageIcon>Icon.png</PackageIcon>
