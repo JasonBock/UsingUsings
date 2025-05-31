@@ -6,17 +6,18 @@ namespace UsingUsings.Core;
 
 public static class UsingDirectiveAggregator
 {
-	public static async Task<ImmutableDictionary<string, double>> AggregateAsync(IDirectoryInfo directory, TextWriter writer)
+	public static async Task<ImmutableDictionary<string, double>> AggregateAsync(
+		IDirectoryInfo directory, Action<string> analyzingUpdate)
 	{
 		ArgumentNullException.ThrowIfNull(directory);
-		ArgumentNullException.ThrowIfNull(writer);
+		ArgumentNullException.ThrowIfNull(analyzingUpdate);
 
 		var fileCount = 0;
 		var directiveCounts = new ConcurrentDictionary<string, uint>();
 
 		foreach (var file in directory.EnumerateFiles("*.cs", SearchOption.AllDirectories))
 		{
-			await writer.WriteLineAsync($"Analyzing {file.FullName}...");
+			analyzingUpdate($"Analyzing {file.FullName}...");
 			fileCount++;
 
 			var analyzer = new UsingDirectiveDetector(
