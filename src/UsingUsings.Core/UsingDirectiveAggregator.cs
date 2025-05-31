@@ -1,11 +1,12 @@
 ﻿using System.Collections.Concurrent;
 using System.Collections.Immutable;
+using System.IO.Abstractions;
 
 namespace UsingUsings.Core;
 
 public static class UsingDirectiveAggregator
 {
-	public static ImmutableDictionary<string, double> Aggregate(DirectoryInfo directory, TextWriter writer)
+	public static async Task<ImmutableDictionary<string, double>> AggregateAsync(IDirectoryInfo directory, TextWriter writer)
 	{
 		ArgumentNullException.ThrowIfNull(directory);
 		ArgumentNullException.ThrowIfNull(writer);
@@ -15,9 +16,9 @@ public static class UsingDirectiveAggregator
 
 		foreach (var file in directory.EnumerateFiles("*.cs", SearchOption.AllDirectories))
 		{
-			writer.WriteLine($"Analyzing {file.FullName}...");
+			await writer.WriteLineAsync($"Analyzing {file.FullName}...");
 			fileCount++;
-			var analyzer = new UsingDirectiveDetector(File.ReadAllText(file.FullName));
+			var analyzer = new UsingDirectiveDetector(await File.ReadAllTextAsync(file.FullName));
 
 			foreach (var directive in analyzer.Directives)
 			{

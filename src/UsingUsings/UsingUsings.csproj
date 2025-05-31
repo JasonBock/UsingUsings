@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<AssemblyName>UsingUsings</AssemblyName>
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
@@ -21,6 +21,9 @@
 		<RootNamespace>UsingUsings</RootNamespace>
 		<ToolCommandName>usingusings</ToolCommandName>
 	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="System.IO.Abstractions" />
+	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\UsingUsings.Core\UsingUsings.Core.csproj" />
 	</ItemGroup>

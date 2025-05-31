@@ -41,6 +41,9 @@ dotnet_diagnostic.CA1303.severity = none
 dotnet_diagnostic.CA1014.severity = none
 dotnet_diagnostic.NU1603.severity = none
 
+# CA2007: Consider calling ConfigureAwait
+dotnet_diagnostic.CA2007.severity = none
+
 # NUnit analyzers
 dotnet_diagnostic.NUnit2029.severity=error
 dotnet_diagnostic.NUnit2001.severity=error
