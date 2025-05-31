@@ -17,7 +17,7 @@ public static class UsingDirectiveAggregator
 		{
 			writer.WriteLine($"Analyzing {file.FullName}...");
 			fileCount++;
-			var analyzer = new UsingDirectiveAnalyzer(File.ReadAllText(file.FullName));
+			var analyzer = new UsingDirectiveDetector(File.ReadAllText(file.FullName));
 
 			foreach (var directive in analyzer.Directives)
 			{

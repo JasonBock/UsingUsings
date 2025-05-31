@@ -2,10 +2,10 @@
 
 namespace UsingUsings.Core.Tests;
 
-public static class UsingDirectiveAnalyzerTests
+internal static class UsingDirectiveDetectorTests
 {
 	[Test]
-	public static void Analyze()
+	public static void Detect()
 	{
 		var code =
 @"using NUnit.Framework;
@@ -13,11 +13,11 @@ using System;
 
 public static class Stuff { }";
 
-		var analyzer = new UsingDirectiveAnalyzer(code);
+		var detector = new UsingDirectiveDetector(code);
 
 		Assert.Multiple(() =>
 		{
-			var directives = analyzer.Directives;
+			var directives = detector.Directives;
 			Assert.That(directives.Count, Is.EqualTo(2));
 			Assert.That(directives, Has.Member("NUnit.Framework"));
 			Assert.That(directives, Has.Member("System"));
@@ -25,7 +25,7 @@ public static class Stuff { }";
 	}
 
 	[Test]
-	public static void AnalyzeWhenCodeContainsMultipleDirectives()
+	public static void DetectWhenCodeContainsMultipleDirectives()
 	{
 		var code =
 @"using NUnit.Framework;
@@ -40,11 +40,11 @@ public static class Stuff
 	public static class MoreStuff { }
 }";
 
-		var analyzer = new UsingDirectiveAnalyzer(code);
+		var detector = new UsingDirectiveDetector(code);
 
 		Assert.Multiple(() =>
 		{
-			var directives = analyzer.Directives;
+			var directives = detector.Directives;
 			Assert.That(directives.Count, Is.EqualTo(2));
 			Assert.That(directives, Has.Member("NUnit.Framework"));
 			Assert.That(directives, Has.Member("System"));
@@ -52,7 +52,7 @@ public static class Stuff
 	}
 
 	[Test]
-	public static void AnalyzeWhenCodeHasGlobalNamespace()
+	public static void DetectWhenCodeHasGlobalNamespace()
 	{
 		var code =
 @"using NUnit.Framework;
@@ -67,11 +67,11 @@ public static class Stuff
 	public static class MoreStuff { }
 }";
 
-		var analyzer = new UsingDirectiveAnalyzer(code);
+		var detector = new UsingDirectiveDetector(code);
 
 		Assert.Multiple(() =>
 		{
-			var directives = analyzer.Directives;
+			var directives = detector.Directives;
 			Assert.That(directives.Count, Is.EqualTo(2));
 			Assert.That(directives, Has.Member("NUnit.Framework"));
 			Assert.That(directives, Has.Member("System"));

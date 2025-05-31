@@ -4,9 +4,9 @@ using System.Collections.Immutable;
 
 namespace UsingUsings.Core;
 
-public sealed class UsingDirectiveAnalyzer
+public sealed class UsingDirectiveDetector
 {
-	public UsingDirectiveAnalyzer(string code)
+	public UsingDirectiveDetector(string code)
 	{
 		ArgumentNullException.ThrowIfNull(code);
 
