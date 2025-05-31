@@ -105,6 +105,11 @@ internal static class UsingDirectiveAggregatorTests
 		using var writer = new StringWriter();
 		var results = await UsingDirectiveAggregator.AggregateAsync(directoryExpectations.Instance(), writer);
 
-		Assert.That(results, Has.Count.EqualTo(2));
+		Assert.Multiple(() =>
+		{
+			Assert.That(results, Has.Count.EqualTo(2));
+			Assert.That(results["System"], Is.EqualTo(1.0));
+			Assert.That(results["System.Reflection"], Is.EqualTo(1.0));
+		});
 	}
 }
