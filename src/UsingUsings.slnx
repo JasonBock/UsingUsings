@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../changelog.md" />
+    <File Path="../LICENSE" />
+    <File Path="../README.md" />
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Project Path="UsingUsings.Core.Tests/UsingUsings.Core.Tests.csproj" />
+  <Project Path="UsingUsings.Core/UsingUsings.Core.csproj" />
+  <Project Path="UsingUsings/UsingUsings.csproj" />
+</Solution>

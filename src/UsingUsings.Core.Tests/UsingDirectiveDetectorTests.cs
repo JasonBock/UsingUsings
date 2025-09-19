@@ -5,13 +5,32 @@ namespace UsingUsings.Core.Tests;
 internal static class UsingDirectiveDetectorTests
 {
 	[Test]
+	public static void DetectWithAlias()
+	{
+		var code =
+			"""
+			using TupleAlias = (string[] names, Guid id);
+			""";
+
+		var detector = new UsingDirectiveDetector(code);
+
+		Assert.Multiple(() =>
+		{
+			var directives = detector.Directives;
+			Assert.That(directives.Count, Is.EqualTo(0));
+		});
+	}
+
+	[Test]
 	public static void Detect()
 	{
 		var code =
-@"using NUnit.Framework;
-using System;
+		 """
+		 using NUnit.Framework;
+		 using System;
 
-public static class Stuff { }";
+		 public static class Stuff { }
+		 """;
 
 		var detector = new UsingDirectiveDetector(code);
 
@@ -28,17 +47,19 @@ public static class Stuff { }";
 	public static void DetectWhenCodeContainsMultipleDirectives()
 	{
 		var code =
-@"using NUnit.Framework;
-using System;
+		 """
+		 using NUnit.Framework;
+		 using System;
 
-namespace StuffNamespace;
+		 namespace StuffNamespace;
 
-using System;
+		 using System;
 
-public static class Stuff 
-{ 
-	public static class MoreStuff { }
-}";
+		 public static class Stuff 
+		 { 
+		 	public static class MoreStuff { }
+		 }
+		 """;
 
 		var detector = new UsingDirectiveDetector(code);
 
@@ -55,17 +76,19 @@ public static class Stuff
 	public static void DetectWhenCodeHasGlobalNamespace()
 	{
 		var code =
-@"using NUnit.Framework;
-using System;
+		 """
+		 using NUnit.Framework;
+		 using System;
 
-namespace StuffNamespace;
+		 namespace StuffNamespace;
 
-using global::System;
+		 using global::System;
 
-public static class Stuff 
-{ 
-	public static class MoreStuff { }
-}";
+		 public static class Stuff 
+		 { 
+		 	public static class MoreStuff { }
+		 }
+		 """;
 
 		var detector = new UsingDirectiveDetector(code);
 

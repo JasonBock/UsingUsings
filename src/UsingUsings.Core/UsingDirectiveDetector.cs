@@ -12,8 +12,11 @@ public sealed class UsingDirectiveDetector
 
 		var directives = new HashSet<string>();
 		var unit = SyntaxFactory.ParseCompilationUnit(code);
+		var usingNodes = unit.DescendantNodes(_ => true)
+			.OfType<UsingDirectiveSyntax>()
+			.Where(node => node.Name is not null);
 
-		foreach (var directive in unit.DescendantNodes(_ => true).OfType<UsingDirectiveSyntax>())
+		foreach (var directive in usingNodes)
 		{
 			directives.Add(directive.Name!.ToString()
 				.Replace("global::", string.Empty, StringComparison.InvariantCulture));
