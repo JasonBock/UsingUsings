@@ -17,7 +17,7 @@ internal static class UsingDirectiveDetectorTests
 		using (Assert.EnterMultipleScope())
 		{
 			var directives = detector.Directives;
-			Assert.That(directives.Count, Is.EqualTo(0));
+			Assert.That(directives, Is.Empty);
 		}
 	}
 
@@ -25,19 +25,19 @@ internal static class UsingDirectiveDetectorTests
 	public static void Detect()
 	{
 		var code =
-		 """
-		 using NUnit.Framework;
-		 using System;
+			"""
+			using NUnit.Framework;
+			using System;
 
-		 public static class Stuff { }
-		 """;
+			public static class Stuff { }
+			""";
 
 		var detector = new UsingDirectiveDetector(code);
 
 		using (Assert.EnterMultipleScope())
 		{
 			var directives = detector.Directives;
-			Assert.That(directives.Count, Is.EqualTo(2));
+			Assert.That(directives, Has.Count.EqualTo(2));
 			Assert.That(directives, Has.Member("NUnit.Framework"));
 			Assert.That(directives, Has.Member("System"));
 		}
@@ -47,26 +47,26 @@ internal static class UsingDirectiveDetectorTests
 	public static void DetectWhenCodeContainsMultipleDirectives()
 	{
 		var code =
-		 """
-		 using NUnit.Framework;
-		 using System;
+			"""
+			using NUnit.Framework;
+			using System;
 
-		 namespace StuffNamespace;
+			namespace StuffNamespace;
 
-		 using System;
+			using System;
 
-		 public static class Stuff 
-		 { 
-		 	public static class MoreStuff { }
-		 }
-		 """;
+			public static class Stuff 
+			{ 
+			public static class MoreStuff { }
+			}
+			""";
 
 		var detector = new UsingDirectiveDetector(code);
 
 		using (Assert.EnterMultipleScope())
 		{
 			var directives = detector.Directives;
-			Assert.That(directives.Count, Is.EqualTo(2));
+			Assert.That(directives, Has.Count.EqualTo(2));
 			Assert.That(directives, Has.Member("NUnit.Framework"));
 			Assert.That(directives, Has.Member("System"));
 		}
@@ -76,26 +76,26 @@ internal static class UsingDirectiveDetectorTests
 	public static void DetectWhenCodeHasGlobalNamespace()
 	{
 		var code =
-		 """
-		 using NUnit.Framework;
-		 using System;
+			"""
+			using NUnit.Framework;
+			using System;
 
-		 namespace StuffNamespace;
+			namespace StuffNamespace;
 
-		 using global::System;
+			using global::System;
 
-		 public static class Stuff 
-		 { 
-		 	public static class MoreStuff { }
-		 }
-		 """;
+			public static class Stuff 
+			{ 
+			public static class MoreStuff { }
+			}
+			""";
 
 		var detector = new UsingDirectiveDetector(code);
 
 		using (Assert.EnterMultipleScope())
 		{
 			var directives = detector.Directives;
-			Assert.That(directives.Count, Is.EqualTo(2));
+			Assert.That(directives, Has.Count.EqualTo(2));
 			Assert.That(directives, Has.Member("NUnit.Framework"));
 			Assert.That(directives, Has.Member("System"));
 		}
