@@ -14,11 +14,11 @@ internal static class UsingDirectiveDetectorTests
 
 		var detector = new UsingDirectiveDetector(code);
 
-		Assert.Multiple(() =>
+		using (Assert.EnterMultipleScope())
 		{
 			var directives = detector.Directives;
 			Assert.That(directives.Count, Is.EqualTo(0));
-		});
+		}
 	}
 
 	[Test]
@@ -34,13 +34,13 @@ internal static class UsingDirectiveDetectorTests
 
 		var detector = new UsingDirectiveDetector(code);
 
-		Assert.Multiple(() =>
+		using (Assert.EnterMultipleScope())
 		{
 			var directives = detector.Directives;
 			Assert.That(directives.Count, Is.EqualTo(2));
 			Assert.That(directives, Has.Member("NUnit.Framework"));
 			Assert.That(directives, Has.Member("System"));
-		});
+		}
 	}
 
 	[Test]
@@ -63,13 +63,13 @@ internal static class UsingDirectiveDetectorTests
 
 		var detector = new UsingDirectiveDetector(code);
 
-		Assert.Multiple(() =>
+		using (Assert.EnterMultipleScope())
 		{
 			var directives = detector.Directives;
 			Assert.That(directives.Count, Is.EqualTo(2));
 			Assert.That(directives, Has.Member("NUnit.Framework"));
 			Assert.That(directives, Has.Member("System"));
-		});
+		}
 	}
 
 	[Test]
@@ -92,12 +92,12 @@ internal static class UsingDirectiveDetectorTests
 
 		var detector = new UsingDirectiveDetector(code);
 
-		Assert.Multiple(() =>
+		using (Assert.EnterMultipleScope())
 		{
 			var directives = detector.Directives;
 			Assert.That(directives.Count, Is.EqualTo(2));
 			Assert.That(directives, Has.Member("NUnit.Framework"));
 			Assert.That(directives, Has.Member("System"));
-		});
+		}
 	}
 }
